@@ -50,7 +50,7 @@ export default {
   },
   created: function() {
     // a function to call getposts action
-    return this.GetPosts()
+    this.GetPosts()
   },
   computed: {
     ...mapGetters({ Posts: "StatePosts", User: "StateUser" }),
@@ -58,7 +58,11 @@ export default {
   methods: {
     ...mapActions(["CreatePost", "GetPosts"]),
     async submit() {
-      return await this.CreatePost(this.form);
+      try {
+        return await this.CreatePost(this.form);
+      } catch (error) {
+        throw "Sorry you can't make a post now!"
+      }
     },
   },
 };

@@ -38,8 +38,12 @@ export default {
   methods: {
     ...mapActions(["Register"]),
     async submit() {
-      await this.Register(this.form);
-      this.$router.push("/login");
+      try {
+        await this.Register(this.form);
+        this.$router.push("/login");
+      } catch (error) {
+        throw "Username exists on Database"
+      }
     },
   },
 };
