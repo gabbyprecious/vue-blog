@@ -1,55 +1,53 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import store from '../store';
-import Home from '../views/Home.vue'
-import Register from '../views/Register'
-import Login from '../views/Login'
-import Posts from '../views/Posts'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import store from "../store";
+import Home from "../views/Home.vue";
+import Register from "../views/Register";
+import Login from "../views/Login";
+import Posts from "../views/Posts";
 
-
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/register',
-    name: 'Register',
-    component: Register
+    path: "/register",
+    name: "Register",
+    component: Register,
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
   {
-    path: '/posts',
-    name: 'Posts',
+    path: "/posts",
+    name: "Posts",
     component: Posts,
-    meta: {requiresAuth: true},
-  }
-]
+    meta: { requiresAuth: true },
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (store.getters.isAuthenticated) {
-      next()
-      return
+      next();
+      return;
     }
-    next('/login')
+    next("/login");
   } else {
-    next()
+    next();
   }
-})
+});
 
-
-export default router
+export default router;

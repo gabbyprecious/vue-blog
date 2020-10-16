@@ -1,18 +1,18 @@
 <template>
   <div class="login">
-      <div>
-          <form @submit.prevent="submit">
-            <div>
-              <label for="username">Username:</label>
-              <input type="text" name="username" v-model="form.username">
-            </div>
-            <div>
-              <label for="password">Password:</label>
-              <input type="password" name="password" v-model="form.password">
-            </div>
-            <button type="submit"> Submit</button>
-          </form>
-      </div>
+    <div>
+      <form @submit.prevent="submit">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" name="username" v-model="form.username" />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password" v-model="form.password" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -20,29 +20,27 @@
 import { mapActions } from "vuex";
 
 export default {
-  name: 'Login',
-  components: {
-    
-  },
+  name: "Login",
+  components: {},
   data() {
     return {
       form: {
-        username: '',
-        password:'',
-      }
+        username: "",
+        password: "",
+      },
     };
   },
   methods: {
     ...mapActions(["LogIn"]),
     async submit() {
-      const User = new FormData()
-      User.append('username', this.form.username)
-      User.append('password', this.form.password)
-      await this.LogIn(User)
-      this.$router.push('/posts')
-    }
-  }
-}
+      const User = new FormData();
+      User.append("username", this.form.username);
+      User.append("password", this.form.password);
+      await this.LogIn(User);
+      this.$router.push("/posts");
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -55,22 +53,22 @@ label {
   display: inline-block;
 }
 
-button[type=submit] {
-  background-color: #4CAF50;
+button[type="submit"] {
+  background-color: #4caf50;
   color: white;
   padding: 12px 20px;
   cursor: pointer;
-  border-radius:30px;
+  border-radius: 30px;
 }
 
-button[type=submit]:hover {
+button[type="submit"]:hover {
   background-color: #45a049;
 }
 
 input {
   margin: 5px;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  padding:10px;
-  border-radius:30px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  padding: 10px;
+  border-radius: 30px;
 }
 </style>

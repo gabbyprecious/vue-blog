@@ -13,22 +13,20 @@
 </template>
 <script>
 export default {
-  name: 'NavBar',
-  computed : {
-      isLoggedIn : function(){ return this.$store.getters.isAuthenticated}
+  name: "NavBar",
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.getters.isAuthenticated;
     },
-    methods: {
-      async logout (){
-        await this.$store.dispatch('LogOut')
-        this.$router.push('/login')
-      }
+  },
+  methods: {
+    async logout() {
+      await this.$store.dispatch("LogOut");
+      this.$router.push("/login");
     },
-
-}
+  },
+};
 </script>
-
-
-
 
 <style>
 #nav {
@@ -48,4 +46,3 @@ a:hover {
   color: #42b983;
 }
 </style>
-
