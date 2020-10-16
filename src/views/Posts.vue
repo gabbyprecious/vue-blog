@@ -50,13 +50,13 @@ export default {
   },
   created: function() {
     // a function to call getposts action
-    return this.$store.dispatch("GetPosts");
+    return this.GetPosts()
   },
   computed: {
     ...mapGetters({ Posts: "StatePosts", User: "StateUser" }),
   },
   methods: {
-    ...mapActions(["CreatePost"]),
+    ...mapActions(["CreatePost", "GetPosts"]),
     async submit() {
       return await this.CreatePost(this.form);
     },
