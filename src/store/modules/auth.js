@@ -17,7 +17,6 @@ const actions = {
     },
 
     async LogIn({dispatch, commit}, user) {
-        console.log(user)
         await axios.post('login',user)
         await commit('setUser', user.get('username'))
         localStorage.setItem('user', user.get('username'))
@@ -31,8 +30,6 @@ const actions = {
 
     async GetPosts({ commit }){
         let response = await axios.get('posts')
-        console.log(response)
-
         commit('setPosts', response.data)
 
     },
