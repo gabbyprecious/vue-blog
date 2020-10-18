@@ -19,7 +19,6 @@ const actions = {
   async LogIn({ dispatch, commit }, user) {
     await axios.post("login", user);
     await commit("setUser", user.get("username"));
-    return await dispatch("GetPosts");
   },
 
   async CreatePost({ dispatch }, post) {
