@@ -40,7 +40,7 @@ export default {
     async submit() {
       try {
         await this.Register(this.form);
-        this.$router.push("/login");
+        this.$router.push("/posts");
       } catch (error) {
         throw "Username exists on Database"
       }
