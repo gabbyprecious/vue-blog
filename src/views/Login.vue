@@ -12,6 +12,7 @@
         </div>
         <button type="submit">Submit</button>
       </form>
+      <p v-if="showError" id="error">Username or Password is incorrect</p>
     </div>
   </div>
 </template>
@@ -28,6 +29,7 @@ export default {
         username: "",
         password: "",
       },
+      showError: false
     };
   },
   methods: {
@@ -39,8 +41,9 @@ export default {
       try {
           await this.LogIn(User);
           this.$router.push("/posts");
+          this.showError = false
       } catch (error) {
-        throw "Username or Password incorrect"
+        this.showError = true
       }
     },
   },
@@ -74,5 +77,8 @@ input {
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   padding: 10px;
   border-radius: 30px;
+}
+#error {
+  color: red;
 }
 </style>

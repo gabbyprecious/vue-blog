@@ -17,10 +17,10 @@ const actions = {
     let UserForm = new FormData()
     UserForm.append('username', form.username)
     UserForm.append('password', form.password)
-    dispatch('LogIn', UserForm)
-},
+    await dispatch('LogIn', UserForm)
+  },
 
-  async LogIn({commit }, user) {
+  async LogIn({commit}, user) {
     await axios.post("login", user);
     await commit("setUser", user.get("username"));
   },

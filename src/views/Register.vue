@@ -17,6 +17,7 @@
         <button type="submit">Submit</button>
       </form>
     </div>
+    <p v-if="showError" id="error">Username already exists</p>
   </div>
 </template>
 
@@ -33,6 +34,7 @@ export default {
         full_name: "",
         password: "",
       },
+      showError: false
     };
   },
   methods: {
@@ -41,8 +43,9 @@ export default {
       try {
         await this.Register(this.form);
         this.$router.push("/posts");
+        this.showError = false
       } catch (error) {
-        throw "Username exists on Database"
+        this.showError = true
       }
     },
   },
@@ -75,5 +78,8 @@ input {
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   padding: 10px;
   border-radius: 30px;
+}
+#error {
+  color: red;
 }
 </style>
