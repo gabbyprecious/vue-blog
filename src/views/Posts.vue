@@ -59,7 +59,7 @@ export default {
     ...mapActions(["CreatePost", "GetPosts"]),
     async submit() {
       try {
-        return await this.CreatePost(this.form);
+        await this.CreatePost(this.form);
       } catch (error) {
         throw "Sorry you can't make a post now!"
       }
