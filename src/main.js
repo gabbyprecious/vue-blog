@@ -4,8 +4,9 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
 axios.defaults.baseURL = "https://gabbyblog.herokuapp.com/";
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 axios.interceptors.response.use(undefined, function(error) {
   if (error) {
