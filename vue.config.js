@@ -2,6 +2,6 @@
 module.exports = {
   // options...
   devServer: {
-        proxy: 'http://backend.test/'
+        proxy: 'https://backend.test/'
     }
 }
