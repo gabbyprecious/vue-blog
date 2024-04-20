@@ -5,7 +5,7 @@ import store from "./store";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "https://gabbyblog.herokuapp.com/";
+axios.defaults.baseURL = "https://gabbyblog-97f6eaccfce4.herokuapp.com/";
 
 axios.interceptors.response.use(undefined, function(error) {
   if (error) {
